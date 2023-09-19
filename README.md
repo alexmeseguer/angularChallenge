@@ -34,3 +34,6 @@ Se debe entregar:
 
 
 
+**Notas del autor**
+Creamos la estructura del proyecto con LazyLoading simulando una estructura de aplicación más grande y cotidiando, donde diferenciaríamos distintos módulos de aplicación, como por ejemplo, distinguiendo cuando el usuario está logueado o no.
+Aunque solamente se crea el módulo de los usuarios y el de Angular Material.

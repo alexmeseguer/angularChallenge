@@ -1,24 +1,25 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Error404PageComponent } from './shared/pages/error404-page/error404-page.component';
+import { AppRoutes } from './models/app-routes.model';
 
 const routes: Routes = [
     {
-        path: 'users',
+        path: AppRoutes.USERS,
         loadChildren: () => import('./users/users.module').then(m => m.UsersModule)
     },
     {
-        path: '404',
+        path: AppRoutes.ErrorPage,
         component: Error404PageComponent
     },
     {
         path: '',
-        redirectTo: 'users',
+        redirectTo: AppRoutes.USERS,
         pathMatch: 'full'
     },
     {
         path: '**',
-        redirectTo: '404'
+        redirectTo: AppRoutes.ErrorPage
     }
 ];
 
