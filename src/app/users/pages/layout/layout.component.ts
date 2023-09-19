@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppRoutes } from 'src/app/models/app-routes.model';
 
 @Component({
   selector: 'app-layout',
@@ -7,5 +8,11 @@ import { Component } from '@angular/core';
   ]
 })
 export class LayoutComponent {
+
+    sidebarItems: {label: string, icon: string, url: string}[] = [
+        {label: 'Listado', icon: 'list', url: AppRoutes.LIST},
+        {label: 'Crear usuario', icon: 'add', url: AppRoutes.NEW_USER},
+        {label: 'Buscar usuario', icon: 'search', url: AppRoutes.SEARCH}
+    ];
 
 }
