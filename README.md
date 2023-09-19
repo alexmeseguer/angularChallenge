@@ -1,27 +1,36 @@
-# AngularChallenge
+# codechallenge-Angular-s
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.0.
+**CODE CHALLENGE**
 
-## Development server
+REQUEREMIENTOS DEL CODE CHALLENGE:
+- Simular	un	backend	( RESTful) de usuarios usando el swagger disponible en la siguiente url: https://gitlab.com/cloudappi/code-challenge-front/blob/master/swagger.yaml
+- Desarrollar	los	servicios	( RESTful)	en	Angular	para conectarse	al "backend".
+- Desarrollar una interfaz en Angular que permita listar, crear, editar y eliminar usuarios, la página de inicio deberá ser el listado de usuarios y con botones para acceder a las funcionalidades mencionadas anteriormente.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+No es necesario realizar un	backend	real sin embargo cada candidato	es libre de implementarlo como desee,inclusive	usando	servicios de terceros.
 
-## Code scaffolding
+Por	otro	lado,	se	valorará:
+- Patrones y estilo de desarrollo de front. Buenas prácticas, limpieza del código, test unitarios y e2e.
+- Maquetación	del	proyecto
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+**ENTREGA**
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+El tiempo de desarrollo es de una semana pero mucho mejor si nos lo puedes
+enviar antes.
 
-## Running unit tests
+Se debe entregar:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- Url con la aplicación desplegada.
+- Código fuente.
+- Postman de prueba.
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+**RECUERDA**
 
-## Further help
+- La evaluación la realizarán nuestros ninja masters, gente con mucha experiencia.
+- Según tu calificación, recibirás un diploma de ninja
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+
