@@ -1,0 +1,130 @@
+swagger: '2.0'
+info:
+  description: Users API
+  version: 1.0.0
+  title: Cloudappi Code Challenge
+schemes:
+  - http
+  - https
+produces:
+  - application/json
+consumes:
+  - application/json
+paths:
+  /users:
+    get:
+      description: Get all users
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/user'
+    post:
+      parameters:
+        - in: body
+          name: user
+          schema:
+            $ref: '#/definitions/user'
+          required: true
+      responses:
+        '201':
+          description: CREATED
+          schema:
+            $ref: '#/definitions/user'
+        '405':
+          description: Invalid input
+  /users/{userId}:
+    get:
+      description: Get one user
+      parameters:
+        - in: path
+          name: userId
+          type: integer
+          required: true
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/user'
+        '400':
+          description: Bad request
+        '404':
+          description: User not found
+    put:
+      parameters:
+        - in: path
+          name: userId
+          type: integer
+          required: true
+        - in: body
+          name: user
+          schema:
+            $ref: '#/definitions/user'
+          required: true
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/user'
+        '400':
+          description: Bad request
+        '404':
+          description: User not found
+    delete:
+      parameters:
+        - in: path
+          name: userId
+          type: integer
+          required: true
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '404':
+          description: User not found
+definitions:
+  user:
+    properties:
+      id:
+        type: integer
+        example: 1
+      firstname:
+        type: string
+        example: John
+      lastname:
+        type: string
+        example: Smith
+      email:
+        type: string
+        example: john.smith@example.com
+      birthDate:
+        type: string
+        format: date
+        example: '1980-01-23'
+      address:
+        $ref: '#/definitions/address'
+  address:
+    properties:
+      id:
+        type: integer
+        example: 1
+      street:
+        type: string
+        example: Lindenstraße 89
+      city:
+        type: string
+        example: Freiburg im Breisgau
+      country:
+        type: string
+        example: DE
+        enum: 
+          - ES
+          - UK
+          - DE
+          - US
+      postalcode:
+        type: string
+        example: '42030'
