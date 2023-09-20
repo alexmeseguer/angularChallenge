@@ -8,6 +8,7 @@ import { ListComponent } from './pages/list/list.component';
 import { NewUserComponent } from './pages/new-user/new-user.component';
 import { SearchComponent } from './pages/search/search.component';
 import { MaterialModule } from '../material/material.module';
+import { UserViewComponent } from './components/user-view/user-view.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { MaterialModule } from '../material/material.module';
         LayoutComponent,
         ListComponent,
         NewUserComponent,
-        SearchComponent
+        SearchComponent,
+        UserViewComponent
     ],
     imports: [
         CommonModule,
