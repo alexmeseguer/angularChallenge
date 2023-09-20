@@ -12,12 +12,12 @@ import { MaterialModule } from '../material/material.module';
 
 @NgModule({
     declarations: [
-    UserPageComponent,
-    LayoutComponent,
-    ListComponent,
-    NewUserComponent,
-    SearchComponent
-  ],
+        UserPageComponent,
+        LayoutComponent,
+        ListComponent,
+        NewUserComponent,
+        SearchComponent
+    ],
     imports: [
         CommonModule,
         UsersRoutingModule,
