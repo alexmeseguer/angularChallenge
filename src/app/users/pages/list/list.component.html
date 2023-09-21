@@ -1,7 +1,9 @@
 <h1>Listado de usuarios</h1>
 <mat-divider></mat-divider>
-<div class="grid bm-8">
-    <div class="col-12 sm:col-4 md:col-3 xl:col-2" *ngFor="let user of users">
-        <app-user-view [user]="user"></app-user-view>
+<div class="container mt-4">
+    <div class="grid bm-8">
+        <div class="col-12 sm:col-6 md:col-6 lg:col-4 xl:col-3 ng-star-inserted" *ngFor="let user of users">
+            <app-user-view [user]="user"></app-user-view>
+        </div>
     </div>
 </div>
