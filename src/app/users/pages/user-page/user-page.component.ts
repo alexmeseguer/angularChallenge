@@ -29,7 +29,6 @@ export class UserPageComponent implements OnInit {
                 if (!user) return this.router.navigateByUrl(AppRoutes.LIST);
 
                 this.user = user;
-                console.log(this.user);
                 return;
             });
     }

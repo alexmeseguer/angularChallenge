@@ -1,1 +1,19 @@
-<p>search works!</p>
+<div class="flex flex-column">
+    <h2>Buscador de usuarios</h2>
+    <mat-form-field>
+        <mat-label>Introduzca cualquier dato del usuario a buscar</mat-label>
+        <input matInput type="text" [formControl]="searchInput" [matAutocomplete]="searcher">
+        <mat-autocomplete autoActiveFirstOption #searcher="matAutocomplete" 
+            (optionSelected)="onSelectedOption($event)">
+          <!-- <mat-option *ngFor="let option of filteredOptions | async" value="{{option.firstname}} {{option.lastname}}"> -->
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{option.firstname}} {{option.lastname}}
+          </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+</div>
+<div class="container mt-4">
+    <div *ngIf="userSelected">
+        <app-user-view [user]="userSelected"></app-user-view>
+    </div>
+</div>

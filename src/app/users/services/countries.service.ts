@@ -21,7 +21,6 @@ export class CountriesService {
     getNameCountryByCode(address: Address): Observable<string> {
         // Reemplazamos código del país para que coincida con la librería de restCountries.
         let country = (address.country === 'UK') ? 'GR' : address.country;
-        // const response = await this.http.get(this.apiUrl, { responseType: 'text' }).toPromise();
         return this.http.get(URL_RESTCOUNTRIES_BASE.concat('/alpha/' + country + '?fields=name'))
             .pipe( map( (response: any) => response?.name?.common || "")
         );

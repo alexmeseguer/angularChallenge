@@ -11,6 +11,7 @@ import { MaterialModule } from '../material/material.module';
 import { UserViewComponent } from './components/user-view/user-view.component';
 import { UserImagePipe } from './pipes/user-image.pipe';
 import { UserCountryPipe } from './pipes/user-country.pipe';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { UserCountryPipe } from './pipes/user-country.pipe';
     ],
     imports: [
         CommonModule,
+        ReactiveFormsModule,
         UsersRoutingModule,
         MaterialModule
     ]
