@@ -1,18 +1,41 @@
-<mat-card class="example-card">
-    <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
+<mat-card *ngIf="user">
+    <mat-card-header class="overflow-hidden">
+        <img [src]="user | userImage" mat-card-avatar class="border-1">
         <mat-card-title>{{ user.firstname }} {{user.lastname}}</mat-card-title>
-        <mat-card-subtitle>{{ user.email }}</mat-card-subtitle>
+        <mat-card-subtitle>
+            <span>
+                {{ user.email }}
+            </span>
+        </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-        <p>
-            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-            bred for hunting.
-        </p>
+        <mat-list>
+            <mat-list-item *ngIf="user.birthDate">
+                <span class="font-light">Fecha de nacimiento: </span>
+                <span>{{user.birthDate}}</span>
+            </mat-list-item>
+            <mat-list-item *ngIf="user.address">
+                <span class="font-light">Dirección: </span>
+                <span>{{user.address.street}}</span>
+            </mat-list-item>
+            <mat-list-item *ngIf="user.address">
+                <span class="font-light">Ciudad: </span>
+                <span>{{user.address.city}}</span>
+            </mat-list-item>
+            <mat-list-item *ngIf="user.address">
+                <span class="font-light">Código postal: </span>
+                <span>{{user.address.postalcode}}</span>
+            </mat-list-item>
+            <mat-list-item *ngIf="user.address">
+                <span class="font-light">País: </span>
+                <span>{{(user.address | userCountry) | async}}</span>
+            </mat-list-item>
+        </mat-list>
     </mat-card-content>
+    <mat-divider></mat-divider>
     <mat-card-actions>
-        <button mat-button>LIKE</button>
-        <button mat-button>SHARE</button>
+        <button mat-button color="primary" [routerLink]="routeEdit.replace(':id',user.id?.toString() || '')"><mat-icon>edit</mat-icon>Editar</button>
+        <span class="spacer"></span>
+        <button mat-button color="warn"><mat-icon>delete</mat-icon>Borrar</button>
     </mat-card-actions>
 </mat-card>

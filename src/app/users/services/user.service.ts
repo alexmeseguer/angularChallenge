@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, catchError, of } from 'rxjs';
 import { environments } from 'src/environments/environments';
 import { User } from 'src/swagger/models';
 import { AppRoutes } from '../../models/app-routes.model';
@@ -16,5 +16,11 @@ export class UserService {
 
     getUsers(): Observable<User[]> {
         return this.http.get<User[]>(this.baseUrl);
+    }
+    
+    getUserById(id: string): Observable<User | undefined> {
+        return this.http.get<User>(this.baseUrl.concat("/" + id)).pipe(
+            catchError( err => of(undefined))
+        );
     }
 }

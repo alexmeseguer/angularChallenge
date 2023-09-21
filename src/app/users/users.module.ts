@@ -9,6 +9,8 @@ import { NewUserComponent } from './pages/new-user/new-user.component';
 import { SearchComponent } from './pages/search/search.component';
 import { MaterialModule } from '../material/material.module';
 import { UserViewComponent } from './components/user-view/user-view.component';
+import { UserImagePipe } from './pipes/user-image.pipe';
+import { UserCountryPipe } from './pipes/user-country.pipe';
 
 
 @NgModule({
@@ -18,7 +20,9 @@ import { UserViewComponent } from './components/user-view/user-view.component';
         ListComponent,
         NewUserComponent,
         SearchComponent,
-        UserViewComponent
+        UserViewComponent,
+        UserImagePipe,
+        UserCountryPipe
     ],
     imports: [
         CommonModule,
