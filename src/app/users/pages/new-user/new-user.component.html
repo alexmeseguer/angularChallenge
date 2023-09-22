@@ -46,6 +46,7 @@
         </ng-container>
         <div class="flex">
             <button mat-raised-button color="primary" type="submit"><mat-icon>save</mat-icon>Guardar</button>
+            <button mat-stroked-button color="primary" type="button" class="ml-2" [routerLink]="routeList"><mat-icon>cancel</mat-icon>Cancelar</button>
             <span class="spacer"></span>
             <button *ngIf="currentUser.id" mat-raised-button color="warn" type="button" (click)="deleteUser()" ><mat-icon>delete</mat-icon>Borrar</button>
         </div>

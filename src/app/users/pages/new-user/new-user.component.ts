@@ -30,6 +30,7 @@ export class NewUserComponent implements OnInit {
         }, Validators.required),
     });
     countriesOptions: string[] = ['ES', 'UK', 'DE', 'US'];
+    routeList: string =  AppRoutes.LIST + "/";
 
     constructor(
         private userService: UserService,

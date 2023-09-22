@@ -47,6 +47,7 @@
                         <li *ngIf="user.address">
                             <span class="font-light">País: </span>
                             <span>{{(user.address.country || '' | userCountry) | async}}</span>
+                            <img class="ml-2 mat-icon" [src]="(user.address.country || '' | flagCountry) | async" [ngStyle]="{height: '17px', width: 'auto'}">
                         </li>
                     </ul>
                 </div>

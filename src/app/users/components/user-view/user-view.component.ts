@@ -6,8 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
     selector: 'app-user-view',
-    templateUrl: './user-view.component.html',
-    styleUrls: []
+    templateUrl: './user-view.component.html'
 })
 export class UserViewComponent implements OnInit {
 

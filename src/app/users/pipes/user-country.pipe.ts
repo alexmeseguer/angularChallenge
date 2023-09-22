@@ -14,3 +14,16 @@ export class UserCountryPipe implements PipeTransform {
         return this.countriesService.getNameCountryByCode(country);
     }
 }
+
+@Pipe({
+  name: 'flagCountry'
+})
+export class flagCountryPipe implements PipeTransform {
+
+    constructor(private countriesService: CountriesService) {}
+
+    transform(country: string): Observable<string> {
+        if (!country) return from("País no encontrado");
+        return this.countriesService.getFlagCountryByCode(country);
+    }
+}

@@ -26,9 +26,10 @@
                 <span class="font-light">Código postal: </span>
                 <span>{{user.address.postalcode}}</span>
             </mat-list-item>
-            <mat-list-item *ngIf="user.address">
+            <mat-list-item *ngIf="user.address" class="flex align-items-center">
                 <span class="font-light">País: </span>
                 <span>{{(user.address.country || '' | userCountry) | async}}</span>
+                <img class="ml-2" [src]="(user.address.country || '' | flagCountry) | async" [ngStyle]="{height: '17px'}">
             </mat-list-item>
         </mat-list>
     </mat-card-content>

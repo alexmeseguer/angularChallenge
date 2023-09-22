@@ -10,7 +10,7 @@ import { SearchComponent } from './pages/search/search.component';
 import { MaterialModule } from '../material/material.module';
 import { UserViewComponent } from './components/user-view/user-view.component';
 import { UserImagePipe } from './pipes/user-image.pipe';
-import { UserCountryPipe } from './pipes/user-country.pipe';
+import { flagCountryPipe, UserCountryPipe } from './pipes/user-country.pipe';
 import { ReactiveFormsModule } from '@angular/forms';
 
 
@@ -23,6 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';
         SearchComponent,
         UserViewComponent,
         UserImagePipe,
+        flagCountryPipe,
         UserCountryPipe
     ],
     imports: [
