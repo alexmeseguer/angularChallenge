@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, map, of } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, map, of } from 'rxjs';
 import { environments } from 'src/environments/environments';
 import { User } from 'src/swagger/models';
 
@@ -10,11 +10,23 @@ import { User } from 'src/swagger/models';
 export class UserService {
 
     private baseUrl = environments.urlServer;
+    private usersSubject = new BehaviorSubject<User[]>([]);
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) {
+        // this.refreshUsers();
+    }
 
     getUsers(): Observable<User[]> {
-        return this.http.get<User[]>(this.baseUrl);
+        return this.usersSubject.asObservable();
+    }
+    // getUsers(): Observable<User[]> {
+    //     return this.http.get<User[]>(this.baseUrl);
+    // }
+
+    refreshUsers(): void {
+        this.http.get<User[]>(this.baseUrl).subscribe((users) => {
+            this.usersSubject.next(users);
+        });
     }
 
     getUserById(id: string): Observable<User | undefined> {
@@ -38,8 +50,8 @@ export class UserService {
     deleteUser(user_id: number): Observable<boolean> {
         if (!user_id) throw Error('Usuario requerido');
         return this.http.delete(`${this.baseUrl}/${user_id}`).pipe(
-            catchError(err => of(false)),
-            map(resp => true)
+            map(resp => true),
+            catchError(err => of(false))
         );
     }
 

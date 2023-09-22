@@ -47,7 +47,7 @@
         <div class="flex">
             <button mat-raised-button color="primary" type="submit"><mat-icon>save</mat-icon>Guardar</button>
             <span class="spacer"></span>
-            <button *ngIf="currentUser.id" mat-raised-button color="warn" (click)="deleteUser()" ><mat-icon>delete</mat-icon>Borrar</button>
+            <button *ngIf="currentUser.id" mat-raised-button color="warn" type="button" (click)="deleteUser()" ><mat-icon>delete</mat-icon>Borrar</button>
         </div>
     </div>
 </form>
