@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, lastValueFrom, map, of } from 'rxjs';
-import { Address } from 'src/swagger/models';
+import { Observable, map } from 'rxjs';
 
 const URL_RESTCOUNTRIES_BASE = 'https://restcountries.com/v3.1';
 
@@ -18,12 +17,12 @@ export class CountriesService {
     }
 
     //fields=flags'
-    getNameCountryByCode(address: Address): Observable<string> {
+    getNameCountryByCode(country: string): Observable<string> {
         // Reemplazamos código del país para que coincida con la librería de restCountries.
-        let country = (address.country === 'UK') ? 'GR' : address.country;
+        country = country === 'UK' ? 'GB' : country;
         return this.http.get(URL_RESTCOUNTRIES_BASE.concat('/alpha/' + country + '?fields=name'))
-            .pipe( map( (response: any) => response?.name?.common || "")
-        );
+            .pipe(map((response: any) => response?.name?.common || "")
+            );
     }
 
 }

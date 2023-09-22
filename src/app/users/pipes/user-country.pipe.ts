@@ -1,6 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { Observable, from } from 'rxjs';
-import { Address } from 'src/swagger/models';
 import { CountriesService } from '../services/countries.service';
 
 @Pipe({
@@ -10,9 +9,8 @@ export class UserCountryPipe implements PipeTransform {
 
     constructor(private countriesService: CountriesService) {}
 
-    transform(address: Address): Observable<string> {
-        if (!address.id) return from("País no encontrado");
-        return this.countriesService.getNameCountryByCode(address);
+    transform(country: string): Observable<string> {
+        if (!country) return from("País no encontrado");
+        return this.countriesService.getNameCountryByCode(country);
     }
-
 }

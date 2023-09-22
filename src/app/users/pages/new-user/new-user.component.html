@@ -1,1 +1,53 @@
-<p>new-user works!</p>
+<h1>
+    {{currentUser.id ? 'Editar': 'Crear'}} usuario
+    <small *ngIf="currentUser.id">#{{ currentUser.id}} - {{ currentUser.firstname}} {{ currentUser.lastname}}</small>
+</h1>
+<form (submit)="onSubmit()" [formGroup]="userForm">
+    <div class="flex flex-column">
+        <h2 class="font-light">Datos personales:</h2>
+        <mat-form-field>
+            <mat-label>Nombre: </mat-label>
+            <input required matInput type="text" formControlName="firstname">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Apellidos: </mat-label>
+            <input required matInput type="text" formControlName="lastname">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Correo electrónico: </mat-label>
+            <input required matInput type="email" formControlName="email">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Fecha de nacimiento: </mat-label>
+            <input required matInput type="date" formControlName="birthDate">
+        </mat-form-field>
+        <ng-container formGroupName="address" class="flex flex-column">
+            <h2 class="font-light">Datos de la dirección:</h2>
+            <mat-form-field>
+                <mat-label>Dirección: </mat-label>
+                <input required matInput type="text" formControlName="street">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Ciudad: </mat-label>
+                <input required matInput type="text" formControlName="city">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Código postal: </mat-label>
+                <input required matInput type="text" formControlName="postalcode">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>País: </mat-label>
+                <mat-select formControlName="country">
+                    <mat-option *ngFor="let country of countriesOptions" [value]="country">
+                        {{(country | userCountry) | async}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </ng-container>
+        <div class="flex">
+            <button mat-raised-button color="primary" type="submit"><mat-icon>save</mat-icon>Guardar</button>
+            <span class="spacer"></span>
+            <button *ngIf="currentUser.id" mat-raised-button color="warn" (click)="deleteUser()" ><mat-icon>delete</mat-icon>Borrar</button>
+        </div>
+    </div>
+</form>

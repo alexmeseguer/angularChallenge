@@ -46,7 +46,7 @@
                         </li>
                         <li *ngIf="user.address">
                             <span class="font-light">País: </span>
-                            <span>{{(user.address | userCountry) | async}}</span>
+                            <span>{{(user.address.country || '' | userCountry) | async}}</span>
                         </li>
                     </ul>
                 </div>
