@@ -49,8 +49,8 @@ export class NewUserComponent implements OnInit {
                 this.userForm.reset(user)
 
                 // Refrescamos para que Material muestre correctamente en el display el país precargado
-                this.userForm.controls.address.controls.country.setValue(null);
                 let selected = this.userForm.controls.address.controls.country.value;
+                this.userForm.controls.address.controls.country.setValue(null);
                 setTimeout(() => {
                     this.userForm.controls.address.controls.country.setValue(selected);
                 }, 100);
