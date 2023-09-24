@@ -1,3 +1,3 @@
 export const environments = {
-    urlServer: 'https://my-json-server.typicode.com/alexmeseguer/example-backend-server/users'
+    urlServer: 'https://example-backend-server.onrender.com/users'
 }
