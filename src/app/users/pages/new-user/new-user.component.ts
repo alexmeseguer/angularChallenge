@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/swagger/models';
 import { UserService } from '../../services/user.service';
@@ -23,14 +23,14 @@ export class NewUserComponent implements OnInit {
         lastname: new FormControl('', Validators.required),
         address: new FormGroup({
             city: new FormControl('', Validators.required),
-            country: new FormControl<'ES' | 'UK' | 'DE' | 'US'>('ES', Validators.required),
+            country: new FormControl<'ES' | 'UK' | 'DE' | 'US' | null>(null, Validators.required),
             id: new FormControl(0, Validators.required),
             postalcode: new FormControl('', Validators.required),
             street: new FormControl('', Validators.required)
         }, Validators.required),
     });
     countriesOptions: string[] = ['ES', 'UK', 'DE', 'US'];
-    routeList: string =  AppRoutes.LIST + "/";
+    routeList: string = AppRoutes.LIST + "/";
 
     constructor(
         private userService: UserService,
@@ -46,7 +46,15 @@ export class NewUserComponent implements OnInit {
                 switchMap(({ id }) => this.userService.getUserById(id)),
             ).subscribe((user: User | undefined) => {
                 if (!user) return this.router.navigateByUrl(`../${AppRoutes.LIST}`);
-                return this.userForm.reset(user);
+                this.userForm.reset(user)
+
+                // Refrescamos para que Material muestre correctamente en el display el país precargado
+                this.userForm.controls.address.controls.country.setValue(null);
+                let selected = this.userForm.controls.address.controls.country.value;
+                setTimeout(() => {
+                    this.userForm.controls.address.controls.country.setValue(selected);
+                }, 100);
+                return;
             });
     }
 
@@ -73,7 +81,7 @@ export class NewUserComponent implements OnInit {
     }
 
     deleteUser() {
-        if(this.currentUser.id) this.userService.deleteUser(this.currentUser.id).subscribe( res => {
+        if (this.currentUser.id) this.userService.deleteUser(this.currentUser.id).subscribe(res => {
             this.snackbar.open("Usuario borrado", "Cerrar", { duration: 3000 })
             this.router.navigate(['/' + AppRoutes.USERS + '/' + AppRoutes.LIST])
         });
