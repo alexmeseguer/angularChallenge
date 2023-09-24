@@ -46,7 +46,7 @@ Se debe entregar:
 
 <br>
 
-# Pasos Para arrancar el proyecto y realizar las pruebas**
+# Pasos Para arrancar el proyecto y realizar las pruebas en local**
 
 En Dev:
 
@@ -57,3 +57,13 @@ En Dev:
     > npm run backend-server
  4. Ejecutar aplicación web
     > ng serve
+
+<br>
+
+# Pasos Para probar el proyecto y realizar las pruebas en producción**
+
+En producción:
+
+ 1. Visitar la página despleada en [GitHubPage](https://alexmeseguer.github.io/angularChallenge).
+    
+ 
